@@ -1,4 +1,5 @@
-﻿''''' 
+﻿#--*--coding:utf-8--*--
+''''' 
 伪装浏览器 
 
 对于一些需要登录的网站，如果不是从浏览器发出的请求，则得不到响应。 
@@ -17,20 +18,12 @@ import sys
 
 
 
-servicedir = "D:\\python\\zt66y\\"
-savedir = "D:\\python\\zt66y\\Booklist_Source\\"
 
 
 
-headers = {
-'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) '
-'Chrome/51.0.2704.63 Safari/537.36'
-}
 
-db = pymysql.connect("localhost","root","","catch_t66y",use_unicode=True, charset="utf8")
+if __name__ == "__main__":
 
-# 使用cursor()方法获取操作游标 
-cursor = db.cursor()
 
 
 i = 1
@@ -40,37 +33,21 @@ while 1:
 	pass # do something
 	url = "http://cl.9io.xyz/thread0806.php?fid=16&search=&page=" + '%d'%i
 	print(url)
+	'''
 	req = urllib.request.Request(url=url,headers=headers)
 	res = urllib.request.urlopen(req)
 
 	data = res.read().decode('gbk')
 	#data = data.encode('utf8')
-	
+	'''
 	#如果出错怎么处理？
 	
 	#提取帖子
 	urls = re.findall(r'\<h3\>\<a href=\"(.*)\" target=\"\_blank\" id=\"\">(.*)\<\/a\>\<\/h3\>',data,re.I)
 	
-	'''
 	
-	<h3><a href="htm_data/16/1706/2443000.html" target="_blank" id=""><font color=green>[原创][cl分享团出品]衰男搞定奥迪老板娘丝袜诱惑给你看穴肥水多惹人眼[13P]</font></a></h3>
-	cl_post
-	`oid` int(11) NOT NULL,
-	`title` varchar(512) COLLATE utf8_bin NOT NULL,
-	`url` varchar(512) COLLATE utf8_bin NOT NULL,
-	`create_time` int(11) NOT NULL,
-	`content` text COLLATE utf8_bin NOT NULL,
-	`flg_catch` int(11) NOT NULL,
-	`flg_green` int(11) NOT NULL
-	'''
 	
-	'''
-	findall函数返回的总是正则表达式在字符串中所有匹配结果的列表，此处主要讨论列表中“结果”的展现方式，即findall中返回列表中每个元素包含的信息。
 	
-	@1.当给出的正则表达式中带有多个括号时，列表的元素为多个字符串组成的tuple，tuple中字符串个数与括号对数相同，字符串内容与每个括号内的正则表达式相对应，并且排放顺序是按括号出现的顺序。
-	@2.当给出的正则表达式中带有一个括号时，列表的元素为字符串，此字符串的内容与括号中的正则表达式相对应（不是整个正则表达式的匹配内容）。
-	@3.当给出的正则表达式中不带括号时，列表的元素为字符串，此字符串为整个正则表达式匹配的内容。
-	'''
 	
 	
 	strs = ""

@@ -3,6 +3,12 @@ import pymysql
 # 打开数据库连接
 db = pymysql.connect("localhost","root","","catch_t66y" )
 
+
+db = pymysql.connect("localhost","root","","catch_t66y",use_unicode=True, charset="utf8")
+# 使用cursor()方法获取操作游标 
+cursor = db.cursor()
+
+
 # 使用 cursor() 方法创建一个游标对象 cursor
 cursor = db.cursor()
 
